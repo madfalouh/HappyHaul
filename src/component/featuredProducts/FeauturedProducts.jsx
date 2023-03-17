@@ -29,6 +29,7 @@ function FeauturedProducts() {
                 <StarIcon></StarIcon>
                 <StarIcon></StarIcon>
                 <StarIcon></StarIcon>
+                <span>121 review</span> 
               </div>
             </div>
             <div className="price-wrapper">
@@ -53,6 +54,7 @@ function FeauturedProducts() {
                 <StarIcon></StarIcon>
                 <StarIcon></StarIcon>
                 <StarIcon></StarIcon>
+                <span>121 review</span> 
               </div>
             </div>
             <div className="price-wrapper">
@@ -77,6 +79,7 @@ function FeauturedProducts() {
                 <StarIcon></StarIcon>
                 <StarIcon></StarIcon>
                 <StarIcon></StarIcon>
+                <span>121 review</span> 
               </div>
             </div>
             <div className="price-wrapper">
@@ -100,6 +103,7 @@ function FeauturedProducts() {
                 <StarIcon></StarIcon>
                 <StarIcon></StarIcon>
                 <StarIcon></StarIcon>
+                <span>121 review</span>                
               </div>
             </div>
             <div className="price-wrapper">
@@ -124,6 +128,7 @@ function FeauturedProducts() {
                 <StarIcon></StarIcon>
                 <StarIcon></StarIcon>
                 <StarIcon></StarIcon>
+                <span>121 review</span> 
               </div>
             </div>
             <div className="price-wrapper">
@@ -147,6 +152,7 @@ function FeauturedProducts() {
                 <StarIcon></StarIcon>
                 <StarIcon></StarIcon>
                 <StarIcon></StarIcon>
+                <span>121 review</span> 
               </div>
             </div>
             <div className="price-wrapper">
@@ -170,6 +176,7 @@ function FeauturedProducts() {
                 <StarIcon></StarIcon>
                 <StarIcon></StarIcon>
                 <StarIcon></StarIcon>
+                <span>121 review</span> 
               </div>
             </div>
             <div className="price-wrapper">
@@ -193,6 +200,7 @@ function FeauturedProducts() {
                 <StarIcon></StarIcon>
                 <StarIcon></StarIcon>
                 <StarIcon></StarIcon>
+                <span>121 review</span> 
               </div>
             </div>
             <div className="price-wrapper">

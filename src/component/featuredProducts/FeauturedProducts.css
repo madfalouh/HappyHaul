@@ -6,7 +6,12 @@ justify-content: center;
 align-items: center;
 padding-bottom: 5rem;
 }
-
+.star span {
+padding: 9px 55px 0px 15px ; 
+color: #013531;
+font-weight: 600;
+font-size: 0.9rem;
+}
 .product-wrapper {
   width: 68%; /* set the container width to 50% */
   display: grid;
@@ -78,6 +83,9 @@ color:#088178 ;
 }
 
 .star {
+display: flex;
+
+align-items: center;
 padding-bottom: 1rem;
 color: gold;
 }
