@@ -1,0 +1,70 @@
+.sm-banner .banner-box {
+
+height: 50vh;
+min-width: 900px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+background-image: url("../../assets/img/banner/b10.jpg");
+background-size: cover;
+background-position: center;
+padding: 2rem;
+}
+
+.sm-banner {
+width: 100%;
+display: flex;
+padding: 2rem;
+justify-content: space-around ;
+align-items: center;
+flex-wrap: wrap;
+row-gap: 30px;
+}
+
+.sm-banner h4 {
+color: #fff ;
+font-size: 2rem;
+font-weight: 300;
+margin-bottom: 0.5rem;
+}
+
+.sm-banner h2 {
+color: #fff ;
+font-size: 3rem;
+margin-bottom: 0.5rem;
+}
+
+.sm-banner span {
+color: #fff ;
+font-size: 1.2rem;
+font-weight: 500;
+padding-bottom: 2rem;
+}
+
+
+.sm-banner button {
+
+font-size: 1rem;
+font-weight: 600;
+padding: 1rem 3rem;
+color: #fff;
+background-color: transparent;
+border: 1px solid #fff;
+border-radius: 4px;
+margin-top: 1px;
+cursor: pointer;
+outline: none;
+}
+
+.sm-banner .banner-box:hover  button {
+background: #088178;
+color: #fff;
+padding: 1.07rem 3rem;
+border: none;
+}
+
+.banner-box.box2 {
+background-image: url("../../assets/img/banner/b17.jpg");
+
+}

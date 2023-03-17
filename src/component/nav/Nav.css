@@ -1,0 +1,100 @@
+.navigation-container {
+position: sticky;
+top: 0;
+left: 0;
+z-index: 9999;
+width: 100%;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 55px;
+
+}
+
+.nav-image {
+    margin-top: -20px;
+    width: 250px;
+    height: 110px;
+    background-size: cover;
+    background-position: center center;
+    background-image: url('../../assets/HappyHulLogo.png');
+}
+
+nav li a {
+
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    transition: 0.3s ease;
+}
+
+nav li a:hover,
+nav li a.active {
+    color: #088178;
+
+}
+
+
+
+@keyframes myAnimation {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 55%;
+    }
+}
+
+
+nav li a.active::after,
+nav li a:hover::after {
+    animation: myAnimation 0.15s linear forwards;
+    content: "";
+    width: 55%;
+    height: 3.4px;
+    background: #088178;
+    position: absolute;
+    left: 2px;
+    top: 24px;
+}
+
+.navigation-container {
+
+    padding: 20px;
+    padding-right: 120px;
+    background-color: #E3E6F3;
+
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.06);
+
+    height: 8rem;
+
+
+}
+
+nav li {
+    list-style: none;
+    position: relative;
+}
+
+.search-wrapper {
+    display: flex;
+    width: 100%;
+}
+
+nav li input {
+    width: 100%;
+
+}

@@ -1,0 +1,36 @@
+.feature {
+padding-top: 3rem;
+display: flex;
+flex-direction: row;
+gap :50px ; 
+align-items: center;
+justify-content: center;
+flex-wrap: wrap;
+}
+
+
+.feature  .fe-box img {
+scale: 1.1;
+margin-bottom: 2rem;
+}
+
+
+.feature  .fe-box h6 {
+border-radius: 4px ; 
+padding: 10px;
+text-align: center;
+}
+
+.feature .fe-box{
+
+padding: 55px 40px ;
+border: 1px solid #cce7d0;
+box-shadow: 20px 20px 34px rgba(0,0,0,0.07);
+margin: 1rem 0;
+}
+
+.feature .fe-box:hover  {
+
+box-shadow: 10px 10px 54px rgba(70,62,221,0.2);
+
+}
