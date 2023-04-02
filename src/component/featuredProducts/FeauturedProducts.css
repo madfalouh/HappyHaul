@@ -9,15 +9,19 @@ padding-bottom: 5rem;
 .star span {
 padding: 9px 55px 0px 15px ; 
 color: #013531;
+text-decoration: underline;
 font-weight: 600;
 font-size: 0.9rem;
+}
+.star span:hover {
+color: #6c757d;
+text-decoration: none;
 }
 .product-wrapper {
   width: 68%; /* set the container width to 50% */
   display: grid;
   gap:20px;
   grid-template-columns: repeat(auto-fit, minmax(330px, 1fr) );
-
 }
 
 .product-container{

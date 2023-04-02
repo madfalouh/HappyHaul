@@ -1,0 +1,33 @@
+{
+  "name": "bokingapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "data:import": "node seeder",
+    "data:delete": "node seeder -d"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madfalouh/BokingApp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/madfalouh/BokingApp/issues"
+  },
+  "homepage": "https://github.com/madfalouh/BokingApp#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
+    "mongoose": "^7.0.1",
+    "nodemon": "^2.0.21"
+  }
+}

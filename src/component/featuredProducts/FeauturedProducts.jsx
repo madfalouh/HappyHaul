@@ -10,8 +10,10 @@ import productimg7 from "../../assets/img/products/f7.jpg";
 import productimg8 from "../../assets/img/products/f8.jpg";
 import StarIcon from "@mui/icons-material/Star";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { Link, useNavigate, useNavigation } from "react-router-dom";
 
 function FeauturedProducts() {
+  const navigate = useNavigate()
   return (
     <div className="product-section">
       <h2>Featured Products</h2>
@@ -22,7 +24,7 @@ function FeauturedProducts() {
             <img src={productimg1}></img>
             <div className="des">
               <span>adidas</span>
-              <h5>Cartoon Astronaut T-shirt</h5>
+              <h5  onClick={()=>{navigate("/product/1")}} > Cartoon Astronaut T-shirt</h5>
               <div className="star">
                 <StarIcon></StarIcon>
                 <StarIcon></StarIcon>

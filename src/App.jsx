@@ -1,28 +1,51 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import './App.css'
-import Banner from './component/banner/Banner'
-import FeauturedProducts from './component/featuredProducts/FeauturedProducts'
-import Features from './component/features/Features'
-import LastBanner from './component/lastBanner/LastBanner'
+
+import { BrowserRouter as Router , Routes , Route, useNavigate } from 'react-router-dom'
+import WelcomePage from './Pages/WelcomePage/WelcomePage'
+import ProductPage from './Pages/Products/ProductPage'
+import ProductsPage from './Pages/Products/ProductsPage/ProductsPage'
+
 import Nav from './component/nav/Nav'
-import NewArrivals from './component/NewArrivals/NewArrivals'
-import Sm_banner from './component/sm-banner/Sm_banner'
-import WelcomSection from './component/welcome-section/WelcomSection'
+import CartPage from './Pages/CartPage/CartPage'
+import { getCart } from './actions/cartAction'
+import { useDispatch } from 'react-redux'
+import Login from './Pages/loginPage/Login'
+import Register from './Pages/Register/Register'
+
 
 function App() {
+
+
+
+const dispatch = useDispatch()
+
+useEffect(()=>{
+dispatch(getCart())
+
+
+} ,[] )
+
 
   return (
     <div className="App">
 
-      <Nav></Nav>
-      <WelcomSection></WelcomSection>
-      <Features></Features>
-      <FeauturedProducts></FeauturedProducts>
-      <Banner></Banner>
-      <NewArrivals></NewArrivals>
-      <Sm_banner></Sm_banner>
-      <LastBanner></LastBanner>
+
+<Router>
+<Nav   ></Nav>
+
+      <Routes>
+      <Route path='/'  Component={WelcomePage}  exact ></Route>
+      <Route path='/product/:id'  Component={ProductPage} ></Route>
+      <Route path='/products'  Component={ProductsPage}  ></Route> 
+      <Route path='/cart' Component={CartPage}  ></Route>
+      <Route path='/login' Component={Login}></Route>
+      <Route path='/register'  Component={Register}></Route>
+      </Routes>
+
+</Router>
+
     </div>
   )
 }
