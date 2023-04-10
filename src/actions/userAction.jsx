@@ -1,5 +1,8 @@
 import axios from "axios";
 import {
+  USER_UPDATE_FAIL ,
+  USER_UPDATE_REQUEST  , 
+  USER_UPDATE_SUCCESS  , 
   USER_LIST_REQUEST,
   USER_LIST_SUCCESS,
   USER_LIST_FAIL,
@@ -14,19 +17,36 @@ import {
   USER_REGISTER_FAIL,
 } from "../constant/UserConstant";
 
-export const getuserDetails = () => async (dispatch, id) => {
+export const getuserDetails = () => async (dispatch) => {
   try {
     dispatch({ type: USER_DETAIL_REQUEST });
     const { data } = await axios({
       method: "get",
       url: "http://localhost:8080/api/users/profile",
-      headers: { Authorization: "Bearer " + localStorage.getItem("usertoken") },
+      headers: { Authorization: "Bearer " +  JSON.parse( localStorage.getItem("usertoken") ).token  },
     });
     dispatch({ type: USER_DETAIL_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: USER_DETAIL_FAIL, payload: error.response.data });
   }
 };
+
+
+export const updateUserDetails = (updatedata) => async (dispatch) => {
+  try {
+    dispatch({ type: USER_UPDATE_REQUEST});
+    const { data } = await axios({
+      method: "put",
+      data : updatedata , 
+      url: "http://localhost:8080/api/users/update",
+      headers: { Authorization: "Bearer " +  JSON.parse( localStorage.getItem("usertoken") ).token  },
+    }).then().catch((err)=>{console.log(err);})   ;
+    dispatch({ type: USER_UPDATE_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: USER_UPDATE_FAIL, payload: "error.response.data" });
+  }
+};
+
 
 
 export const loginUser = ( email , password) => async (dispatch) => {

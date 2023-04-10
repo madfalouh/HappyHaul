@@ -13,6 +13,8 @@ import { getCart } from './actions/cartAction'
 import { useDispatch } from 'react-redux'
 import Login from './Pages/loginPage/Login'
 import Register from './Pages/Register/Register'
+import { USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS } from './constant/UserConstant'
+import Profile from './Pages/ProfilePage/Profile'
 
 
 function App() {
@@ -21,11 +23,25 @@ function App() {
 
 const dispatch = useDispatch()
 
+
+
 useEffect(()=>{
 dispatch(getCart())
-
-
 } ,[] )
+
+
+ const userInfo = JSON.parse(  localStorage.getItem("usertoken") )  
+
+
+useEffect(()=>{
+
+
+if( userInfo){
+    dispatch({ type: USER_LOGIN_REQUEST});
+    dispatch({ type: USER_LOGIN_SUCCESS, payload: userInfo });
+
+}
+} , [dispatch , userInfo] )
 
 
   return (
@@ -36,6 +52,7 @@ dispatch(getCart())
 <Nav   ></Nav>
 
       <Routes>
+      <Route path='/profile'  Component={Profile}   ></Route>
       <Route path='/'  Component={WelcomePage}  exact ></Route>
       <Route path='/product/:id'  Component={ProductPage} ></Route>
       <Route path='/products'  Component={ProductsPage}  ></Route> 

@@ -1,5 +1,8 @@
 import { useSelector } from "react-redux";
 import {
+  USER_UPDATE_FAIL , 
+  USER_UPDATE_REQUEST , 
+  USER_UPDATE_SUCCESS , 
   USER_LIST_REQUEST,
   USER_LIST_SUCCESS,
   USER_LIST_FAIL,
@@ -50,6 +53,14 @@ case  USER_REGISTER_SUCCESS  :
 case  USER_REGISTER_FAIL  : 
     return { userError :  action.payload  , isUserLoading : false   , userIsLogged : false }
 
+
+
+case  USER_UPDATE_REQUEST  : 
+    return { user : {}  , isUserLoading : true  , userIsLogged : true  }
+case  USER_UPDATE_SUCCESS  : 
+    return { user :  action.payload  , isUserLoading : false   , userIsLogged : true }
+case  USER_UPDATE_FAIL  : 
+    return { userError :  action.payload  , isUserLoading : false   , userIsLogged : true }
 
 
 default : 

@@ -20,7 +20,6 @@ export const userAuth = asyncHandler(async (req, res, next) => {
 console.log(req.body);
 
   const { email, password } = req.body;
-  console.log("d65aaaaaaaaaaaaaaaaaaaaamlllllllllllllltttttttttttttttttttiiiiiiiiiiiiiiii");
   console.log(password);
 
   const savedUser = await User.findOne({ email: email });
@@ -46,12 +45,13 @@ export const getUserProfile = asyncHandler(async (req, res, next) => {
       id: user._id,
       name: user.name,
       isAdmin: user.isAdmin,
-    });
+      email : user.email    });
   }
 });
 
 export const registerUser = asyncHandler(async (req, res, next) => {
   if (await User.findOne({ email: req.body.email })) {
+  
     res.status(400);
     next(new Error("User already exists."));
    return
@@ -73,7 +73,6 @@ export const registerUser = asyncHandler(async (req, res, next) => {
     });
    next()
   } catch (err) {
-    console.log("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
     console.log(err)
     res.status(500);
     next(new Error("Something went wrong"));
@@ -81,14 +80,22 @@ export const registerUser = asyncHandler(async (req, res, next) => {
 });
 
 export const updateUser = asyncHandler(async (req, res, next) => {
+
   try {
-    const savedUser = await User.findByIdAndUpdate(
-      findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true })
-    );
+
+      console.log(req.body);
+
+    const savedUser = await User.findByIdAndUpdate(req.body.id, { $set: req.body }, { new: true })
+  
+
     res.status(200).json(savedUser);
+
   } catch (err) {
+     console.log(err);
     res.status(500).json(err);
   }
+
+
 });
 
 export const deleteUser = asyncHandler(async (req, res, next) => {
