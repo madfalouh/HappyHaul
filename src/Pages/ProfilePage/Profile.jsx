@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getuserDetails, updateUserDetails } from '../../actions/userAction'
+import './profile.css'
+import ProfileHistory from './ProfileHistorySection/profileHistory'
+
 
 function Profile() {
 const dispatch = useDispatch()
@@ -41,16 +44,21 @@ const hundleChange = () => {
 
 dispatch(updateUserDetails({ id : user.id , email : email , name : name }))
 
-
+/*
+    <input value={email} onChange={(e) => setEmail(e.target.value)} />
+      <input value={name} onChange={(e) => setName(e.target.value)} />
+      <input value={password} onChange={(e) => setPassword(e.target.value)} />
+<button onClick={hundleChange}  >Save</button>
+*/
 }
 
 
   return (
-    <div>
- <input value={email} onChange={(e) => setEmail(e.target.value)} />
-      <input value={name} onChange={(e) => setName(e.target.value)} />
-      <input value={password} onChange={(e) => setPassword(e.target.value)} />
-<button onClick={hundleChange}  >Save</button>
+    <div   className='profile-section'  >
+
+ 
+
+<ProfileHistory></ProfileHistory>
 
     </div>
   )

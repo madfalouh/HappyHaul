@@ -1,0 +1,49 @@
+.history-section {
+margin-top: 20%;
+margin-left: 30%;
+text-align: left;
+}
+
+.title-section  h1 {
+width: 50%;
+font-size: 1.2rem;
+line-height: 30px;
+
+}
+
+
+.history-section  .option-section  h5 {
+font-size: 1rem;
+margin-bottom: 1.2rem;
+}
+
+.history-section   p {
+width: 80%;
+line-height: 20px;
+margin-bottom: 2rem;
+}
+
+
+.history-section  .option-section ul {
+
+margin-bottom: 2.7rem;
+
+}
+
+
+
+.history-section  .option-section li {
+cursor: pointer;
+margin-bottom: 1rem;
+font-size: 0.8rem;
+font-weight: 400;
+list-style-type: none 
+}
+
+
+.history-section  .option-section li:hover {
+
+color: #007aff;
+
+}
+

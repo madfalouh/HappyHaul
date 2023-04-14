@@ -87,7 +87,6 @@ export const updateUser = asyncHandler(async (req, res, next) => {
 
     const savedUser = await User.findByIdAndUpdate(req.body.id, { $set: req.body }, { new: true })
   
-
     res.status(200).json(savedUser);
 
   } catch (err) {

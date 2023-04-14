@@ -5,6 +5,7 @@ import productsRouter from "./routes/productsRouter.js";
 import cartRouter from "./routes/CartRouter.js";
 import { NotFounderror , errorHandler } from "./middleware/ErrorMiddleware.js";
 import cors from 'cors'
+import rateLimit from 'express-rate-limit';
 
 import authrouters from './routes/usersAuth.js'
 
@@ -13,6 +14,9 @@ import authrouters from './routes/usersAuth.js'
 const app = express();
 
 dotenv.config();
+
+
+
 
 
 
@@ -54,6 +58,14 @@ app.use(NotFounderror)
 app.use(errorHandler)
 
 
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, 
+  max: 100, 
+  message: 'Too many requests, please try again later.',
+});
+
+app.use('/api', limiter);
 
 
 app.listen(process.env.PORT, () => {
