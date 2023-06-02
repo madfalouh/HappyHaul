@@ -6,38 +6,28 @@ import "./Nav.css";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
+import nikeLogo from "../../assets/nikeLogo.png";
+
 function Nav() {
-
-
-
   const CartItems = useSelector((state) => state.CartItem);
-  
 
-const User = useSelector((state) => state.user ) 
-const {isUserLoading,user ,userIsLogged } = User
-
-
-
-
-
-
-
-
+  const User = useSelector((state) => state.user);
+  const { isUserLoading, user, userIsLogged } = User;
 
   const { cartLoading, cartItems } = CartItems;
 
-
-console.log(CartItems);
+  console.log(CartItems);
 
   console.log(cartItems?.[0]?.cartItems?.products?.length);
 
   return (
     <div className="navigation-container">
       <nav className="header">
-        <a href="#">
-          <div className="nav-image"></div>
-        </a>
+        <a href="#"></a>
         <ul className="navbar">
+          <li>
+            <img src={nikeLogo}></img>
+          </li>
           <li>
             <a className="active" href="#">
               Home
@@ -47,7 +37,13 @@ console.log(CartItems);
             <a href="#">Shop</a>
           </li>
           <li>
-            <a href="#">Blog</a>
+            <a href="#">News</a>
+          </li>
+          <li>
+            <a href="#">Males</a>
+          </li>
+          <li>
+            <a href="#">Females</a>
           </li>
           <li>
             <a href="#">About</a>
@@ -57,20 +53,17 @@ console.log(CartItems);
           </li>
           <li>
             <a href="/cart">
-               <div className="cart-nav-notification"  >
-
-              <div className="nav-notification" >{cartItems?.[0]?.cartItems?.products?.length ? cartItems?.[0]?.cartItems?.products?.length:null }</div>
-              <LocalMallIcon></LocalMallIcon>
-                 </div>
-
+              <div className="cart-nav-notification"></div>
             </a>
           </li>
-          <li className="a-sign-in" >
-            <a   href="/login">
-            <div className="sign-in-nav" ><Person2Icon  style={{marginTop:"-4px"}}  className="sign-in-icon" ></Person2Icon>       <span className="sign-in"    >
-     {user ? user.name : "Sign in"}
-
- </span> </div>   
+          <li className="a-sign-in">
+            <a href="/login">
+              <div className="sign-in-nav">
+                {" "}
+                <span className="sign-in">
+                  {user ? user.name : "Sign in"}
+                </span>{" "}
+              </div>
             </a>
           </li>
         </ul>

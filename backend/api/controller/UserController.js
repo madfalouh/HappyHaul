@@ -82,12 +82,23 @@ export const registerUser = asyncHandler(async (req, res, next) => {
 export const updateUser = asyncHandler(async (req, res, next) => {
 
   try {
+    const userToUpdtae = await User.findById(req.body.id) ; 
 
-      console.log(req.body);
+console.log(userToUpdtae);
 
+
+     if( await userToUpdtae.matchPassword(req.body.password)){
+    console.log("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
     const savedUser = await User.findByIdAndUpdate(req.body.id, { $set: req.body }, { new: true })
-  
     res.status(200).json(savedUser);
+
+     } else{
+   
+  const err = new Error("Eroor") ; 
+
+next(err) ;
+
+}
 
   } catch (err) {
      console.log(err);

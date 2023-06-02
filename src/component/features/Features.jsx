@@ -1,37 +1,66 @@
 import React from "react";
 import "./Features.css";
-import feature1 from "../../assets/img/features/f1.png";
-import feature2 from "../../assets/img/features/f2.png";
-import feature3 from "../../assets/img/features/f3.png";
-import feature4 from "../../assets/img/features/f4.png";
-import feature5 from "../../assets/img/features/f5.png";
-import feature6 from "../../assets/img/features/f6.png";
+import blackNike from "../../assets/nikeBlack.png";
+import sn1 from "../../assets/sn1.png";
+import sn2 from "../../assets/sn2.png";
+import jordan from "../../assets/jordan.png";
+import converse from "../../assets/converse.png";
+import golfLogo from "../../assets/golf.png";
+import snIm from "../../assets/nbn.png"
 function Features() {
   return (
     <div className="feature">
-      <div className="fe-box">
-        <img src={feature1}></img>
-        <h6  style={{backgroundColor :"#fddde4" , color: "#088178"}} >Free Shipping</h6>
+      <div className="just-do-it-section">
+        <img src={blackNike}></img>
       </div>
-      <div className="fe-box">
-        <img src={feature2}></img>
-        <h6 style={{backgroundColor :"#cdebbc" , color: "#088178"}}>Free Shipping</h6>
-      </div>
-      <div className="fe-box">
-        <img src={feature3}></img>
-        <h6 style={{backgroundColor :"#d1e8f2" , color: "#088178"}}>Free Shipping</h6>
-      </div>
-      <div className="fe-box">
-        <img src={feature4}></img>
-        <h6 style={{backgroundColor :"#cdd4f8" , color: "#088178"}}>Free Shipping</h6>
-      </div>
-      <div className="fe-box">
-        <img src={feature5}></img>
-        <h6 style={{backgroundColor :"#f6dbf6" , color: "#088178"}}>Free Shipping</h6>
-      </div>
-      <div className="fe-box">
-        <img src={feature6}></img>
-        <h6 style={{backgroundColor :"#fff2e5" , color: "#088178"}}>Free Shipping</h6>
+
+      <div className="just-do-it-inner-section">
+        <div className="sn-details">
+          <div className="sn-detail">
+            <p>
+              {" "}
+              Lorem ipsum, dolor sit amet consectetur
+              <br /> adipisicing elit. Adipisci dolores amet
+              <br /> asperiores the ewelence of the best <br></br> and always
+              learn from the best{" "}
+            </p>
+
+            <img src={jordan}></img>
+            <img src={converse}></img>
+            <img src={golfLogo}></img>
+
+            <div className="sn2-detail">
+           <p>Select size and shop now</p>
+              <ul>
+                <li> 4K </li>
+
+                <li>5K</li>
+                <li>6K</li>
+ <li>7K</li>
+ <li>8K</li>
+ <li>9K</li>
+ <li>10K</li>
+              </ul>
+            </div>
+
+           <div className="sn2-detail-image" >
+
+        <img src={snIm} ></img>
+</div>
+
+
+          </div>
+        </div>
+
+        <div className="inner-sn">
+          <div className="sn1-cont">
+            <img src={sn1} className="sn1"></img>
+          </div>
+
+          <div className="sn2-cont">
+            <img src={sn2} className="sn2"></img>
+          </div>
+        </div>
       </div>
     </div>
   );

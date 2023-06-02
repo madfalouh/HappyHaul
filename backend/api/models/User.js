@@ -41,6 +41,26 @@ this.password = await  bcrypt.hash(this.password , salt)
 
 }  )
 
+userShema.pre('findOneAndUpdate', async function (next) {
+  // Check if the password field is being updated
+  if (!this._update.$set || !this._update.$set.password) {
+    next();
+    return;
+  }
+
+  try {
+    // Generate a salt and hash the password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(this._update.$set.password, salt);
+    // Set the hashed password as the updated value
+    this._update.$set.password = hashedPassword;
+    next();
+  } catch (err) {
+    next(err);
+  }
+});
+
+
 
 const User = mongoose.model("User", userShema);
 

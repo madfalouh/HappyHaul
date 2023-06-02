@@ -1,102 +1,89 @@
-.product-section {
-padding-top: 3rem;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-padding-bottom: 5rem;
-}
-.star span {
-padding: 9px 55px 0px 15px ; 
-color: #013531;
-text-decoration: underline;
-font-weight: 600;
-font-size: 0.9rem;
-}
-.star span:hover {
-color: #6c757d;
-text-decoration: none;
-}
-.product-wrapper {
-  width: 68%; /* set the container width to 50% */
-  display: grid;
-  gap:20px;
-  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr) );
-}
-
-.product-container{
-display: flex;
-margin-left: auto;
-margin-right: auto;
-}
-
-.product-container  > .product{
-
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: flex-start;
-border: 1px solid #cce7d0;
-box-shadow: 20px 20px  30px rgba(0,0,0,0.02);
-padding: 20px;
-border-radius: 30px;
-cursor: pointer;
-}
 
 
-.product-container  > .product:hover{
-
-box-shadow: 20px 20px  30px rgba(0,0,0,0.06);
-
-}
-
-.product img {
-border-radius: 30px;
-width: 18rem;
-height: 17rem;
-margin-bottom: 1.15rem;
-}
-
-.product-container h4 {
-color: #088178;
-}
-
-.product-section .product-container  .product .des h5 {
-font-size: 1.1rem;
-padding-top: 0.5rem;
-padding-bottom: 0.5rem;
-}
-
-.product{
-position: relative;
-}
-
-.product-container a {
-background-color: #e8f6ea;
-border-radius: 50%;
-width: 3rem;
-height: 3rem;
-align-items: center;
-justify-content: center;
-display: flex;
-}
-.product-container .cart-now {
-width: 1.5rem;
-height: 1.5rem;
-color:#088178 ; 
-}
-
-.star {
-display: flex;
-
-align-items: center;
-padding-bottom: 1rem;
-color: gold;
-}
-
-.price-wrapper {
-display: flex;
+.product-section-shoes {
+padding-top: 2%;
 width: 100%;
-align-items: center;
-justify-content: space-between;
+background-color: rgb(255, 255, 255);
+}
+
+.product-section-shoes-1  {
+display: inline-block;
+width: 47.5%;
+background-image: linear-gradient( to left , #282827 , #2b2b2b , #2d2d2c , #2e2e2e);
+height: 500px;
+ position: relative;
+}
+
+
+.product-section-shoes-2  {
+width: 47.5%;
+margin-left:48px;
+display: inline-block;
+background-color: black;
+height: 500px;
+  position: relative;
+
+}
+
+.product-section-shoes-2  img {
+
+width: 40rem;
+
+
+  position: absolute; /* position the image absolutely within its parent element */
+  top: 50%; /* move the top edge of the image down to the vertical center of the parent element */
+  left: 65%; /* move the left edge of the image to the horizontal center of the parent element */
+  transform: translate(-50%, -50%);
+}
+
+
+.product-section-shoes-1  img {
+
+width: 40rem;
+
+
+  position: absolute; /* position the image absolutely within its parent element */
+  top: 50%; /* move the top edge of the image down to the vertical center of the parent element */
+  left: 65%; /* move the left edge of the image to the horizontal center of the parent element */
+  transform: translate(-50%, -50%);
+}
+
+.trade-section {
+
+transform: translateX(-10%);
+transform: translateY(-60%);
+
+}
+
+.trade-section h4  {
+color: white;
+
+}
+
+.trade-section p  {
+color: white;
+font-weight: 200;
+width: 60%;
+line-height: 25px;
+}
+
+
+.trade-section button  {
+color: rgb(0, 0, 0);
+padding: 10px 30px;
+cursor: pointer;
+outline: none;
+border-radius:40px;
+font-weight: 600;
+}
+
+.product-section-shoes  h2 {
+margin-left: 2.5%;
+margin-bottom:  1.5%;
+font-weight: 500;
+font-size: 24px;
+line-height: 28px;
+color: #111;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+
 }

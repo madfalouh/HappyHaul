@@ -4,6 +4,7 @@ top: 0;
 left: 0;
 z-index: 9999;
 width: 100%;
+background-color: #141214;
 }
 
 nav {
@@ -11,7 +12,6 @@ nav {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
 }
 
 .navbar {
@@ -19,8 +19,12 @@ nav {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: 55px;
+    gap: 120px;
 
+}
+
+.linear-gradient {
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.93) 11.2%, rgb(63, 61, 61) 78.9%);
 }
 
 .nav-image {
@@ -29,22 +33,16 @@ nav {
     height: 110px;
     background-size: cover;
     background-position: center center;
-    background-image: url('../../assets/HappyHulLogo.png');
 }
 
 nav li a {
-
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #1a1a1a;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #ffffff;
     transition: 0.3s ease;
 }
 
-nav li a:hover,
-nav li a.active {
-    color: #088178;
 
-}
 
 
 
@@ -57,29 +55,45 @@ nav li a.active {
         width: 55%;
     }
 }
+nav li a.active {
+z-index: 99999999999999999999;
+color: black;
+}
 
+nav li a:hover {
+color: black;
+}
 
-nav li a.active::after,
-nav li a:hover::after {
-    animation: myAnimation 0.15s linear forwards;
+nav li a.active::before,
+nav li a:hover::before {
+    z-index: -10;
+    color: #141214;
     content: "";
-    width: 55%;
-    height: 3.4px;
-    background: #088178;
+    width: 120px;
+    height: 240%;
+    background-color: #fff;
     position: absolute;
-    left: 2px;
-    top: 24px;
+    top: -14px;
+    left: 50%; /* changed from -50% to 50% */
+    transform: translateX(-50%); /* added to center horizontally */
+    border-radius: 4px;
+    transition-delay: 1s; /* added delay */
+    transition: all 1s ease; /* added transition */
+}
+
+nav li a:hover::before {
+    transition-delay: 1.2s; /* Add a slight delay to the hover transition */
 }
 
 .navigation-container {
-
-    padding: 20px;
-    padding-right: 120px;
-    background-color: #E3E6F3;
-
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.06);
-
-    height: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding-left: 50px;
+    height: 5rem;
+box-shadow: 1px 11px 10px 0px rgba(0,0,0,0.81);
+-webkit-box-shadow: 1px 11px 10px 0px rgba(0,0,0,0.81);
+-moz-box-shadow: 1px 11px 10px 0px rgba(0,0,0,0.81);
 
 
 }
@@ -135,4 +149,10 @@ display: flex;
 
 align-items: center;
 
+}
+
+.navbar li img {
+width: 85px;
+margin-top: 10px;
+margin-right: 80px;
 }

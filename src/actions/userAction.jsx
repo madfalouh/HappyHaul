@@ -25,6 +25,9 @@ export const getuserDetails = () => async (dispatch) => {
       url: "http://localhost:8080/api/users/profile",
       headers: { Authorization: "Bearer " +  JSON.parse( localStorage.getItem("usertoken") ).token  },
     });
+console.log("from react ");
+   console.log(data);
+
     dispatch({ type: USER_DETAIL_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: USER_DETAIL_FAIL, payload: error.response.data });

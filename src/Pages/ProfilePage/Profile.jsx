@@ -1,6 +1,8 @@
+import { ManageAccounts } from '@mui/icons-material'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getuserDetails, updateUserDetails } from '../../actions/userAction'
+import ManageAccount from './Manage Account/ManageAccount'
 import './profile.css'
 import ProfileHistory from './ProfileHistorySection/profileHistory'
 
@@ -59,6 +61,8 @@ dispatch(updateUserDetails({ id : user.id , email : email , name : name }))
  
 
 <ProfileHistory></ProfileHistory>
+
+<ManageAccount></ManageAccount>
 
     </div>
   )

@@ -1,70 +1,104 @@
-.sm-banner .banner-box {
-
-height: 50vh;
-min-width: 900px;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: flex-start;
-background-image: url("../../assets/img/banner/b10.jpg");
-background-size: cover;
-background-position: center;
-padding: 2rem;
-}
-
 .sm-banner {
-width: 100%;
 display: flex;
-padding: 2rem;
-justify-content: space-around ;
+
+flex-direction: column;
+gap: 20px;
+background-color: rgb(255, 255, 255);
+}
+
+.sm-banner  h2  {
+margin-left: 2.5%;
+    margin-bottom: 1.5%;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #111;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+
+.sm-imgs {
+display: flex;
 align-items: center;
-flex-wrap: wrap;
-row-gap: 30px;
+justify-content: center;
+gap: 20px;
+background-color: rgb(255, 255, 255);
 }
 
-.sm-banner h4 {
-color: #fff ;
-font-size: 2rem;
-font-weight: 300;
-margin-bottom: 0.5rem;
+.sm-imgs .img-1 img {
+
+width:  100%;
+
 }
 
-.sm-banner h2 {
-color: #fff ;
-font-size: 3rem;
-margin-bottom: 0.5rem;
+.sm-imgs .img-1 {
+width: 47%;
+
 }
 
-.sm-banner span {
-color: #fff ;
-font-size: 1.2rem;
+
+.sm-imgs .img-2 img {
+
+width:  100%;
+
+}
+
+.sm-imgs .img-2 {
+width: 47%;
+
+}
+
+.img-1 {
+
+position: relative;
+}
+
+.img-2 {
+
+position: relative;
+}
+
+.img-shop {
+width: 100%;
+position: absolute;
+
+top: 78%;
+left: 5%;
+display: grid;
+
+flex-direction: column;
+
+justify-content: flex-start;
+
+align-items: flex-start;
+
+}
+
+
+.img-shop h2 {
+width: 100%;
+} 
+
+.img-shop p {
+line-height: 1px;
+margin-left: 2%;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+color: #111;
 font-weight: 500;
-padding-bottom: 2rem;
+font-size: 16px;
+
 }
 
-
-.sm-banner button {
-
-font-size: 1rem;
-font-weight: 600;
-padding: 1rem 3rem;
-color: #fff;
-background-color: transparent;
-border: 1px solid #fff;
-border-radius: 4px;
-margin-top: 1px;
-cursor: pointer;
+.img-shop button {
+color: aliceblue;
+border-radius: 25px;
+background-color: #111;
+padding: 10px 15px;
+width: 30%;
 outline: none;
-}
-
-.sm-banner .banner-box:hover  button {
-background: #088178;
-color: #fff;
-padding: 1.07rem 3rem;
 border: none;
-}
-
-.banner-box.box2 {
-background-image: url("../../assets/img/banner/b17.jpg");
-
+font-size: 16px;
+margin-top: 8%;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+font-weight: 500;
 }
