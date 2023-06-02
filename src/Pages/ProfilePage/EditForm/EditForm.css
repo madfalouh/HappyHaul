@@ -1,0 +1,33 @@
+.edit-form {
+display: none;
+position: absolute;
+top: 15%;
+width: 55%;
+left: 20%;
+z-index: 999999999999999;
+}
+
+.show-edit-form{
+display: block;
+}
+
+.black-bg {
+display: block;
+position: fixed;
+bottom: 0;
+top: 0;
+left: 0;
+right: 0;
+width: 100vw;
+opacity: 0.1;
+background-color: rgb(0, 0, 0);
+height: 100vh;
+
+}
+
+.edit-form-link {
+height: 35px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
