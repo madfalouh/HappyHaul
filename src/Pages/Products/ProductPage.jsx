@@ -7,18 +7,11 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import OpenClick from "../../component/openClick/OpenClick";
 import { useDispatch, useSelector } from "react-redux";
-import { listProductDetail } from "../../actions/productAction";
 import Loader from "../../component/Loader/Loader";
 import ErrorPage from "../../component/errorPage/ErrorPage";
 import StarIcon from "@mui/icons-material/Star";
 import classNames from "classnames";
 import Slide_comp from "../../component/slide-componement/slide_comp";
-import {
-  addCart,
-  getCart,
-  removeCart,
-  updateCart,
-} from "../../actions/cartAction";
 
 function ProductPage() {
   const { id } = useParams();
@@ -32,9 +25,7 @@ function ProductPage() {
 
   const [open, setOpen] = useState();
 
-  useEffect(() => {
-    dispatch(listProductDetail(id));
-  }, [dispatch]);
+
 
   const addToCartHundler = () => {
     setOpen((open) => !open);

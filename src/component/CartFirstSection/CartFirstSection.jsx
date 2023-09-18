@@ -3,7 +3,6 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 import f1 from '../../assets/img/blog/b5.jpg'
-import { getCart, updateCart } from "../../actions/cartAction";
 import { useDispatch, useSelector } from "react-redux";
 
 function CartFirstSection({props}) {

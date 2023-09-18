@@ -2,36 +2,25 @@ import classNames from "classnames";
 import React, { useEffect, useState } from "react";
 import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { loginUser } from "../../actions/userAction";
-import Loader from "../../component/Loader/Loader";
 import "./Login.css";
+import nikeBlack from "../../assets/nikeLogoBack.png";
+import nikeWhite from "../../assets/nikeLogo.png";
+import axios from "axios";
+import jwtDecode from 'jwt-decode';
+import { useNavigate } from "react-router-dom";
+import { authActionLogin } from "../../store/auth/auth.action";
+import { selectCurrentUser } from "../../store/auth/auth.selector";
 
 function Login() {
-  const email = useRef();
   const errRef = useRef();
-  const password = useRef();
   const [emailerr, setEmailErr] = useState(false);
   const [passworderr, setPasswordErr] = useState(false);
+  const navigate = useNavigate()
 
-  const [emaill, setEmail] = useState();
   const dispatch = useDispatch();
 
   const User = useSelector((state) => state.user);
 
-  const { isUserLoading, user, userIsLogged } = User;
-
-  const hundleLogin = () => {
-    console.log(email.current.value, password.current.value);
-
-    dispatch(loginUser(email.current.value, password.current.value));
-  };
-
-  useEffect(() => {
-    if (userIsLogged) {
-      //history.pushState('/')
-    }
-  }, [history, userIsLogged]);
 
   const checkEmail = (e) => {
     e = e.trim();
@@ -52,7 +41,6 @@ function Login() {
   };
 
   const isValidEmail = (email) => {
-    // Use a regular expression to check if the email format is valid
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
@@ -63,88 +51,107 @@ function Login() {
     return regex.test(password);
   };
 
+const defaultFormFields = {
+email  : "" , 
+password : ""
+}
+
+const [formFields , setFormFields] = useState(defaultFormFields)
+const userInfo = useSelector(selectCurrentUser)
+const {email , password } = formFields
+
+const handleChange = (e)=>{
+setFormFields({...formFields , [e.target.name] :e.target.value  })
+}
+
+const handleLogin = () => {
+dispatch(authActionLogin({ email , password}))
+};
+
+useEffect (()=>{
+if(userInfo){
+navigate("/admin")
+}
+
+
+}, [userInfo])
+
+
+
   return (
     <div>
-      {isUserLoading ? (
-        <Loader></Loader>
-      ) : (
+      { (
         <>
-          {" "}
           <div className="login-container">
-            <h3>User Login</h3>
-            <div className="login-wrrapper-box">
-              <div className="login-tile">
-                <h5>Login to your account</h5>
-              </div>
-              <div className="body-login">
-                <div
-                  className={classNames("body-input-login first-login", {
-                    "login-error-show": emailerr,
-                  })}
-                >
-                  <label>Email</label>
-                  <input
-                    onChange={(e) => {
-                      checkEmail(e.target.value);
-                    }}
-                    ref={email}
-                    type={"text"}
-                    placeholder={"Enter your Email"}
-                  ></input>
-                  <label
-                    className={classNames("login-error", {
-                      "login-error-show": emailerr,
-                    })}
-                    style={{ marginTop: "80px", display: "none" }}
-                  >
-                    Invalid Email
-                  </label>
+            <div className="login-wrapper">
+              <div className="login-first-section">
+                <div className="login-first-section-image">
+                  <img />
                 </div>
-                <br></br>
-                <div
-                  className={classNames("body-input-login  second-login  ", {
-                    "login-error-show": passworderr,
-                  })}
-                >
-                  <div className="password-login">
-                    <label>Password</label>
-                    <label
-                      className={"login-password"}
-                      placeholder={"Enter your Password"}
-                    >
-                      Forgot Password ?{" "}
-                    </label>
-                  </div>
+              </div>
 
-                  <input
-                    ref={password}
-                    type={"password"}
-                    onChange={(e) => {
-                      checkPassword(e.target.value);
-                    }}
-                  ></input>
-                  <label
-                    className={classNames("login-error", {
-                      "login-error-show": passworderr,
-                    })}
-                    style={{ marginTop: "80px" }}
-                  >
-                   The password must be between 8-16 characters long and contain at least one uppercase letter, one lowercase letter, and one special character to be considered valid
-                  </label>
+              <div className="login-second-section">
+                <div className="login-second-section-wrrapper">
+                  <div className="login-body">
+                    <div className="login-title">
+                      <div className="login-title-image">
+                        <img src={nikeBlack} />
+                      </div>
+                      <div className="login-title-name">
+                        <h2>Your Account for Everything Nike</h2>
+                      </div>
+                    </div>
+                    <div className="login-input-wrapper">
+                      <div className="login-body-input">
+                        <div class="col-3 input-effect">
+                          <input class="effect-19" type="text" name="email"  placeholder=""  onChange={handleChange} />
+                          <label>email</label>
+                        </div>
+                        <div class="col-3 input-effect">
+                          <input
+                            name="password"
+                            class="effect-19"
+                            type="password"
+                            placeholder=""
+                            onChange={handleChange}
+                          />
+                          <label>Password</label>
+                        </div>
+                      </div>
+                      <div className="login-fotter-input">
+                        <div className="remember-me">
+                          <div class="form-group">
+                            <input type="checkbox" id="html" />
+                            <label className="label" for="html">
+                              Remember Me
+                            </label>
+                          </div>
+                        </div>
+                        <div className="forgot-password">
+                          <p>Forgot Password ?</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="login-submit-buttons">
+                      <div className="btn1">
+                        <button onClick={handleLogin}>
+                          {" "}
+                          <p> LOG IN </p>
+                          <img
+                            width={40}
+                            style={{ float: "left" }}
+                            src={nikeWhite}
+                          />
+                        </button>
+                      </div>
+
+                      <div className="btn2"></div>
+                    </div>
+                  </div>
                 </div>
-                <div className="checkbox-input">
-                  <input type={"checkbox"}></input>
-                  <label>Stay signed in</label>
-                </div>
-                <button onClick={hundleLogin}>
-                  {" "}
-                  <Link className="login-link" to="/">
-                    Login
-                  </Link>{" "}
-                </button>
-              </div>
-              <div className="create-account">
-                <h5>Create an account</h5>
+
+                <div className="login-footer"></div>
               </div>
             </div>
           </div>

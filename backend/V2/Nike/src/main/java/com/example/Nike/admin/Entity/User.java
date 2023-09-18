@@ -1,6 +1,7 @@
 package com.example.Nike.admin.Entity;
 
-import com.example.Nike.token.Token;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -14,8 +15,7 @@ import java.util.*;
 @AllArgsConstructor
 @Getter
 @Setter
-@Builder
-
+@Builder(toBuilder = true)
 @NoArgsConstructor
 @Table(name = "users")
 public class User implements UserDetails {
@@ -30,22 +30,40 @@ public class User implements UserDetails {
     private  String firstName ;
     @Column( name = "last_name" , length =  64 , nullable = false )
     private String secondName ;
-    private boolean enabled ;
+    private boolean enabled  ;
+    private boolean rememberMe = false;
     @Column(length =  64 )
 
     private  String photos ;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @Enumerated(EnumType.STRING)
     @JoinTable(name = "users_roles" , joinColumns = @JoinColumn(name = "user_id")
             , inverseJoinColumns = @JoinColumn(name = "role_id"))
+
      private Set<Role>  roles = new HashSet<>() ;
     public  void addRole(Role role) {
         this.roles.add(role) ; }
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Token> tokens;
 
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", enabled=" + enabled +
+                ", isRememberMe=" + rememberMe +
+                ", photos='" + photos + '\'' +
+                ", roles=" + roles +
+                ", tokens=" + tokens +
+                '}';
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -77,4 +95,16 @@ public class User implements UserDetails {
     public boolean isCredentialsNonExpired() {
         return true;
     }
+
+
+    @Transient
+    public String getPhotosImagePath() {
+        if(id == null || photos==null ) return  "/images/default-image.png" ;
+
+        return  "/user-photos" +this.id +"/"+ this.photos ;
+
+
+    }
+
+
 }

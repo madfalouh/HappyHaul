@@ -2,7 +2,6 @@ import classNames from "classnames";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getuserDetails, updateUserDetails } from "../../../actions/userAction";
 import "./EditForm.css";
 
 function EditForm({open  , setOpen}) {

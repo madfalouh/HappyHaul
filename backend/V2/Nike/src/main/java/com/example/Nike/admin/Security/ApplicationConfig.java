@@ -1,6 +1,4 @@
-package com.example.Nike.admin.JwtConfiguration;
-
-
+package com.example.Nike.admin.Security;
 import com.example.Nike.admin.Repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -17,25 +15,21 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @RequiredArgsConstructor
 public class ApplicationConfig {
 
-
-    private final UserRepository repository ;
-
+    private final UserRepository repository;
 
     @Bean
-public UserDetailsService userDetailsService() {
-
+    public UserDetailsService userDetailsService() {
         return username -> repository.findByEmail(username) ;
+
     }
 
-@Bean
+    @Bean
     public AuthenticationProvider authenticationProvider() {
-
-    DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider() ;
-    authenticationProvider.setUserDetailsService(userDetailsService());
-        authenticationProvider.setPasswordEncoder(passwordEncoder());
-        return authenticationProvider ;
-}
-
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(userDetailsService());
+        authProvider.setPasswordEncoder(passwordEncoder());
+        return authProvider;
+    }
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
@@ -46,6 +40,5 @@ public UserDetailsService userDetailsService() {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 
 }

@@ -1,10 +1,10 @@
 package com.example.Nike.Entity;
 
+import com.example.Nike.admin.Entity.Token;
+import com.example.Nike.admin.Entity.TokenType;
 import com.example.Nike.admin.Entity.User;
 import com.example.Nike.admin.Repository.TokenRepository;
 import com.example.Nike.admin.Repository.UserRepository;
-import com.example.Nike.token.Token;
-import com.example.Nike.token.TokenType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

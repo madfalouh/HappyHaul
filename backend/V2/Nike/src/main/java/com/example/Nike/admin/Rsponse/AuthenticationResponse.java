@@ -1,5 +1,4 @@
-package com.example.Nike.admin.Auth;
-
+package com.example.Nike.admin.Rsponse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -9,10 +8,12 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class AuthResponse {
+@NoArgsConstructor
+public class AuthenticationResponse {
 
     @JsonProperty("access_token")
     private String accessToken;
+    @JsonProperty("refresh_token")
+    private String refreshToken;
 }

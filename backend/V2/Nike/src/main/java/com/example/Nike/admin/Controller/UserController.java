@@ -1,134 +1,97 @@
 package com.example.Nike.admin.Controller;
 
-
+import com.example.Nike.UserMapper.UpdateUserDTO;
 import com.example.Nike.admin.Entity.User;
-import com.example.Nike.admin.Exception.UserNotFoundExceotion;
-import com.example.Nike.admin.FileUploadUtil;
+import com.example.Nike.admin.Exception.CustomDatabaseException;
+import com.example.Nike.admin.Exception.UserNotFoundException;
+import com.example.Nike.admin.Rsponse.UserPageResponse;
 import com.example.Nike.admin.service.*;
+import jakarta.annotation.Nullable;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
+
 
 @Controller
 @Transactional
+@RequiredArgsConstructor
+@RequestMapping("/api/v1/users")
+@CrossOrigin(origins = "http://localhost:5174")
+
 public class UserController {
 
-    @Autowired
-    private UserService service ;
+    private final UserService service;
 
 
-
-
-    @GetMapping("/users")
+    @GetMapping("/admin")
     @ResponseBody
-    public List<User> listAll() {
-        return service.listUsers();
+    public ResponseEntity listAll() throws UserNotFoundException {
+        return ResponseEntity.ok().body(service.listUsers());
     }
 
-
-    @PostMapping("/users/new")
+    @PatchMapping ("/admin/{id}/update")
     @ResponseBody
-    public String createUser(@RequestBody   User user , @RequestBody MultipartFile multipartFile) throws IOException {
-       // service.save(user) ;
-        System.out.print(multipartFile.getOriginalFilename());
-        String filename = StringUtils.cleanPath(multipartFile .getOriginalFilename() ) ;
-        String uploadDir = "user-photos" ;
+    public ResponseEntity<?> updateUser(@PathVariable Integer id, @RequestBody() UpdateUserDTO userToUpdate) throws UserNotFoundException {
+        User savedUser = service.updateUser(id, userToUpdate);
+        return ResponseEntity.status(HttpStatus.OK).body(savedUser);
+    }
 
-        FileUploadUtil.saveFile(uploadDir , filename , multipartFile);
-       return "redirect:/users" ;
+    @GetMapping("/admin/page/{num}/{sortField}/{sortDir}/{keyword}")
+    public ResponseEntity listByPage(@PathVariable int num, @PathVariable String sortField, @PathVariable String sortDir, @PathVariable @Nullable String keyword) throws UserNotFoundException {
 
+        Page<User> pageUser = service.listByPage(num, sortField, sortDir, keyword);
+        List<User> listUsers = pageUser.getContent();
+        UserPageResponse response = new UserPageResponse(listUsers, pageUser.getTotalElements(), pageUser.getTotalPages());
+        return ResponseEntity.ok(response);
     }
 
 
-    @PostMapping("/users/auth")
+    @PostMapping("/admin")
+    public ResponseEntity createUser(@RequestBody() UpdateUserDTO userToUpdate) throws Exception {
+        System.out.println(userToUpdate);
+        User savedUser = service.save(userToUpdate);
+        return ResponseEntity.ok(savedUser);
+    }
+
+
+    @DeleteMapping("/admin/delete/{id}")
     @ResponseBody
-    public String user() {
+    public ResponseEntity deleteUser(@PathVariable Integer id) throws UserNotFoundException, Exception {
+        System.out.println("***************************************************");
+        System.out.println(id);
+        service.delete(id);
+        return ResponseEntity.ok().body("Deleted successfully");
+    }
 
-
-
-
-        return null ;
+    @PutMapping("admin/{id}/enable/{status}")
+    public ResponseEntity enableUser(@PathVariable("id") Integer id, @PathVariable("status") boolean status, RedirectAttributes redirectAttributes) throws UserNotFoundException, CustomDatabaseException {
+        service.enableUser(id, status);
+        return ResponseEntity.ok().body(status ? "User Enabled" : "User Disabled");
 
     }
 
-    @PostMapping("/users/img")
-    @ResponseBody
-    public String img(@RequestBody MultipartFile multipartFile) {
-        // service.save(user) ;
-        System.out.print(multipartFile.getOriginalFilename());
-        return "redirect:/users" ;
+    @GetMapping("/{id}")
+    public ResponseEntity listUserDetails(@PathVariable Integer id)  {
+        return ResponseEntity.ok().body(service.getUserById(id));
 
     }
-
-    @GetMapping("/redirect")
-    public String redirect(RedirectAttributes redirectAttributes) {
-        redirectAttributes.addFlashAttribute("redirect", true);
-        return "redirect:/users";
-    }
-
-    @PostMapping("/users/check_email")
-    public  String checkDuplicateEmail(@Param("email")  String email ) {
-
-      //  return service.isEmailUnique(email)  ?"OK" : "Duplicated" ;
-        return  null ;
-    }
-
-    @PostMapping("/users/delete/{id}")
-    public  String deleteUser(@Param("id") Integer id  , RedirectAttributes redirectAttributes ) {
-        redirectAttributes.addFlashAttribute("message"  , " Deleted succefuly") ;
-        try {
-            service.delete(id) ;
-        } catch (UserNotFoundExceotion e) {
-          redirectAttributes.addFlashAttribute("message" , e.getMessage()) ;
-        }
-
-        return  "redirect:/users" ;
-    }
-
-
-
-    @GetMapping("users/edit/{id}")
-    public String editUserForm(@PathVariable(name = "id")  Integer id   , RedirectAttributes redirectAttributes ) {
-
-        User user = null ;
-try {
-
-   user =  service.getUserById(id).get() ;
-
-} catch (Exception ex) {
-    redirectAttributes.addFlashAttribute("message"  , ex.getMessage()) ;
-
-        }
-
-
-        return  "redirect:/users" ;
-    }
-
-@PutMapping("users/{id}/enable/{status}")
-public String  enableUser( @PathVariable("id") Integer id ,  @PathVariable("status") boolean status , RedirectAttributes redirectAttributes  ) throws UserNotFoundExceotion {
-
-    try {
-        service.enableUser( id , status) ;
-    } catch (UserNotFoundExceotion e) {
-        throw new UserNotFoundExceotion("not found");
-    }
-
-    redirectAttributes.addFlashAttribute("message" , "message" ) ;
-
-return  "redirect:/users" ;
 
 
 }
 
 
 
-
-}

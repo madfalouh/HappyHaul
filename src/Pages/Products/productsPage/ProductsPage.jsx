@@ -1,7 +1,6 @@
 import { useParams } from "react-router";
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { listProducts } from "../../../actions/productAction";
 import Product from "../../../component/product/product";
 import "./ProductsPage.css";
 import ErrorPage from "../../../component/errorPage/ErrorPage";
@@ -13,11 +12,7 @@ function ProductsPage() {
 
   const { loading, error, products } = productList;
 
- console.log("hhjhjhjhjjhhlkkkkkkkkkkkkkkkkkkkkkkk"+error);
-
-  useEffect(() => {
-    dispatch(listProducts());
-  }, [dispatch]);
+ 
 
   return (
     <div className="ProductsPage-container">

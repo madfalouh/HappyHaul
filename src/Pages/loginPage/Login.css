@@ -1,186 +1,208 @@
 .login-container {
-height: 70vh;
+height: 100vh;
+position: relative;
 display: flex;
-transform: translateY(10%);
-flex-direction: column;
 align-items: center;
+justify-content: center;
 }
 
-.login-wrrapper-box {
-
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-width: 47%;
-height: fit-content;
-border-radius: 4px;
-padding: 3rem;
-  background: white;
-  border-radius: 4px;
+.login-wrapper {
+position: absolute;
+top : 15% ;
   box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px,
     rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+width: 70%;
+height: 80%;
+display: grid;
+grid-template-columns: 60% auto;
+border-radius: 15px;
 }
 
-.login-wrrapper-box .login-tile h5 {
+.login-wrapper .login-first-section {
+height: 100%;
+ border-top-left-radius: 14px; /* Adjust the radius as needed */
+  border-bottom-left-radius: 14px; /* Adjust the radius as needed */background-image: url("../../assets/nikeAd.webp");
+ }
 
-  font-size: 1.1rem;
-  padding-bottom: 3rem;
-
-font-weight: 500;
-}
-
-.body-login {
-width: 100%;
-}
-
-.body-login  .body-input-login {
-position: relative;
-width: 100%;
+.login-title-image img {
+width: 130px;
 }
 
 
+.login-input-wrapper {
 
-.body-login  .body-input-login > label {
-width: 100%;
-position: absolute;
-font-size: 12.8px;
-top: -60%;
-font-weight: 600;
-}
-.password-login {
-position: absolute;
-top: -60%;
-
-font-weight: 600;
-font-size: 12.8px;
-width: 100%;
 display: flex;
-flex-direction: row;
-justify-content: space-between;
-}
-
-.login-password {
-left: 80%;
+justify-content: center;
+align-items: center;
+flex-direction: column;
 
 }
-.first-login {
-margin-bottom: 40px;
+.login-title-image {
+display: flex;
+align-items: center;
+justify-content: center;
 }
 
+.login-title-name {
+text-align: center;
+}
 
+.login-title-name h2 {
+font-size: 35px;
+font-family:Arial, Helvetica, sans-serif ;
+ }
 
-.body-login  .body-input-login  input {
+.login-body-input input {
 border: unset ;
-  outline-color: #0b988fd8 ;
-border-radius:4px ;
+  outline-color: #171616d8 ;
+ border-radius:4px ;
 width: 100% ;
   text-align: left;
   display: flex;
   justify-content: center;
   align-items: center;
-height: 44px;
+height: 57px;
   padding: 8px 16px;
-
+margin-bottom: 10%;
 font-size: 14px;
   box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-    rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(60, 66, 87, 0.16) 0px 0px 0px 1px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.28) 0px 0px 0px 1px,
     rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
     rgba(0, 0, 0, 0) 0px 0px 0px 0px;
-}
-
-.second-login {
-
-
-
-margin-bottom: 20px;
 
 }
 
+.login-body-input {
+width: 78%;
+margin-top: 10%;
+}
 
-.checkbox-input  input {
-  width: 20px;
-  height: 15px;
+
+.input-effect {
+position: relative;
+}
+
+ 
+.input-effect  label {
+position: absolute;
+top : 20px ;
+left: 15px;
+font-size: 13.5px;
+}
+
+.input-effect input:focus + label {
+  position: absolute;
+  top: -22px;
+  left: 5px;
+  font-size: 13.5px;
+  font-weight: bold;
+}
+
+.input-effect label {
+  transition: top 0.3s, font-size 0.3s;
+}
+.login-fotter-input{
+display: flex;
+ width: 79%;
+align-items: center;
+justify-content: space-between;
+}
+
+
+
+.form-group {
+  display: block;
+ }
+
+.form-group input {
+  padding: 0;
+  height: initial;
+  width: initial;
+  margin-bottom: 0;
+  display: none;
+  cursor: pointer;
+}
+
+.form-group label {
+  position: relative;
+  cursor: pointer;
+}
+
+.form-group label:before {
+  content:'';
+  -webkit-appearance: none;
+  background-color: transparent;
+border-radius: 50%;
+  border: 2px solid #687075;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+  padding: 10px;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
   margin-right: 5px;
-  box-shadow: unset;
-  min-height: unset;
 }
 
-.login-container button {
-margin: 30px 0;
-border-radius: 4px;
+.form-group input:checked + label:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 2px;
+  left: 9px;
+  width: 6px;
+  height: 14px;
+  border: solid #687075;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.form-group input:not(:empty) + label {
+  position: absolute;
+  top: -22px;
+  left: 5px;
+  font-size: 13.5px;
+  font-weight: bold;
+}
+
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.login-submit-buttons {
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+
+.login-submit-buttons button {
+margin-top: 15%;
+position: relative;
+color: white;
 outline: none;
 border: none;
-padding: 1rem;
-width: 100%;
-
-  background-color: #088178;
-  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-    rgba(0, 0, 0, 0.12) 0px 1px 1px 0px, #088178 0px 0px 0px 1px,
-    rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-    rgba(60, 66, 87, 0.08) 0px 2px 5px 0px;
-
-
+font-family:Arial, Helvetica, sans-serif ;
+ width: 400px;
+height: 60px;
+border-radius: 5px;
+cursor: pointer;
+  background: linear-gradient(to left, black 70%, rgb(94, 91, 91));
 }
 
 
-
-.login-link {
-
+.login-submit-buttons button p { 
+font-weight: 400;
 color: white;
-
-font-weight: 600;
-
 }
 
-.create-account {
-width: 100%;
-color: #088178;
-text-align: center;
-}
-
-.checkbox-input label {
-margin-bottom: -1px;
-font-size: 12.8px;
-font-weight: 600;
-}
-
-.checkbox-input {
-margin-top: 50px;
-display: flex;
-align-items:center;
-flex-direction: row;
-}
-
-.login-password {
-font-weight: 600;
-color: #088178;
-}
-
-.login-container >h3 {
-
-color: #088178;
-margin-bottom: 50px;
-}
-
-
-.login-error-show input {
-
-
-outline-color: red !important  ;
-
-}
-
-.body-input-login >  .login-error {
+.login-submit-buttons button img { 
 position: absolute;
-color: red;
-display: none;
-}
- 
- .login-error-show {
-display: block !important ; 
-
-}
-
-.second-login {
-margin-top: 10px;
+top: 5px;
+right: 85%;
 }

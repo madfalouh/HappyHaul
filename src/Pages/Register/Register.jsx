@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { loginUser, registerUser } from "../../actions/userAction";
 import Loader from "../../component/Loader/Loader";
 import '../../Pages/loginPage/Login.css'
 function Register() {
